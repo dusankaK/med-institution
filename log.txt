@@ -1,0 +1,9 @@
+[09-04-2020 10:33:31]Doktor Dragan je kreiran.
+[09-04-2020 10:33:31]Pacijent Dusanka je kreiran.
+[09-04-2020 10:33:31]Doktor Dejan je kreiran.
+[09-04-2020 10:33:31]Pregled secer u krvi za pacijenta Dusanka je zakazan
+[09-04-2020 10:33:31]Pregled pritisak za pacijenta Dusanka je zakazan
+[09-04-2020 10:33:31]Pregled holesterol u krvi za pacijenta Dusanka je zakazan
+[09-04-2020 10:33:31]Pacijent Dusanka je odabrao/la doktora Dragan.
+[09-04-2020 10:33:31]Dusanka žao nam je, ali možete imati samo jednog izabranog lekara.
+[09-04-2020 10:33:31]Pregled pritiska za pacijenta Dusanka je obavljen 11.07.2020 u 18:00. Gornja vrednost pritiska: 177, donja vrednost: 78, puls: 62.

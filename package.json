@@ -8,5 +8,8 @@
   },
   "author": "dusanka",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
 }

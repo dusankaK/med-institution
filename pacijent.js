@@ -1,5 +1,9 @@
 import {Osoba} from "./osoba.js"
 import {Pregled} from "./pregled.js"
+import fs from "fs";
+import moment from "moment";
+
+var stream = fs.createWriteStream("log.txt", { flags: "a" });
 
 export default class Pacijent extends Osoba {
   constructor(ime, prezime, jmbg, brojZk){
@@ -8,45 +12,82 @@ export default class Pacijent extends Osoba {
     this.brojZk = brojZk
     this.doktor = null
     this.pregledi = []
-    console.log(`Pacijent ${this.ime} je kreiran!`)
+    stream.write(
+      "[" +
+        moment().format("DD-MM-YYYY h:mm:ss") +
+        "]" +
+        `Pacijent ${this.ime} je kreiran.` +
+        `\n`
+    );
   }
 
   izaberiDoktora(doktor){
     if(this.doktor){
-      console.log(`${this.ime} žao nam je, ali možete imati samo jednog izabranog lekara.` )
-      return
+      stream.write(
+        "[" +
+          moment().format("DD-MM-YYYY h:mm:ss") +
+          "]" +
+          `${this.ime} žao nam je, ali možete imati samo jednog izabranog lekara.` +
+          `\n`
+      );
+      return;
     } else {
       this.doktor = doktor;
-      doktor.pacijenti.push(this)
-      console.log(`Pacijent ${this.ime} je odabrao/la doktora ${this.doktor.ime}.`)
+      doktor.pacijenti.push(this);
+      stream.write(
+        "[" +
+          moment().format("DD-MM-YYYY h:mm:ss") +
+          "]" +
+          `Pacijent ${this.ime} je odabrao/la doktora ${this.doktor.ime}.` +
+          `\n`
+      );
     }  
   }
 
   obaviPregled(tip){
-    var pregled = this.pregledi.find(preg => preg.Tip === tip)
+    var pregled = this.pregledi.find(preg => preg.tip === tip)
     if(!pregled) {
-      console.log('Nema takvog pregleda');
+      stream.write(
+        "[" +
+          moment().format("DD-MM-YYYY h:mm:ss") +
+          "]" +
+          "Nema takvog pregleda." +
+          `\n`
+      );
       return;
     }
 
     if(tip === 'secer u krvi') {
       var secer = new Pregled('secer u krvi')
-      console.log(`Pregled šećera u krvi za pacijenta ${this.ime} je obavljen ${pregled.Datum} u ${pregled.Vreme}.`)
-      console.log(`Vrednost šećera u krvi: ${secer.vrednost}`)
-
+      stream.write(
+        "[" +
+          moment().format("DD-MM-YYYY h:mm:ss") +
+          "]" +
+          `Pregled šećera u krvi za pacijenta ${this.ime} je obavljen ${pregled.datum} u ${pregled.vreme}.Vrednost šećera u krvi: ${secer.vrednost}` +
+          `\n`
+      );
       this.pregledi.splice(this.pregledi.indexOf(pregled),1);
     }
     if(tip === 'pritisak') {
       var pritisak = new Pregled('pritisak')
-      console.log(`Pregled pritiska za pacijenta ${this.ime} je obavljen ${pregled.Datum} u ${pregled.Vreme}.`)
-      console.log(`Gornja vrednost pritiska: ${pritisak.gornji}, donja vrednost: ${pritisak.donji}, puls: ${pritisak.puls}.`)
-
+      stream.write(
+        "[" +
+          moment().format("DD-MM-YYYY h:mm:ss") +
+          "]" +
+          `Pregled pritiska za pacijenta ${this.ime} je obavljen ${pregled.datum} u ${pregled.vreme}. Gornja vrednost pritiska: ${pritisak.gornji}, donja vrednost: ${pritisak.donji}, puls: ${pritisak.puls}.` +
+          `\n`
+      );
       this.pregledi.splice(this.pregledi.indexOf(pregled),1);
     }
     if(tip === 'secer u holesterol') {
       var secer = new Pregled('holesterol u krvi')
-      console.log(`Pregled holesterola u krvi za pacijenta ${this.ime} je obavljen ${pregled.Datum} u ${pregled.Vreme}.`)
-      console.log(`Vrednost holesterola u krvi je: ${holesterol.vrednost}`)
+      stream.write(
+        "[" +
+          moment().format("DD-MM-YYYY h:mm:ss") +
+          "]" +
+          `Pregled holesterola u krvi za pacijenta ${this.ime} je obavljen ${pregled.datum} u ${pregled.vreme}. Vrednost holesterola u krvi je: ${holesterol.vrednost}` +
+          `\n`
+      );
       this.pregledi.splice(this.pregledi.indexOf(pregled),1);
     }
 
