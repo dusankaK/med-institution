@@ -27,7 +27,6 @@ export default class Pacijent extends Osoba {
       console.log('Nemate zakazanih pregleda');
       return;
     }
-    //hard code-ovano
     this.pregledi[0].obaviPregled();
     this.pregledi.splice(this.pregledi[0], 1);
   }

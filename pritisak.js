@@ -10,6 +10,6 @@ export default class Pritisak extends Pregled {
   }
 
   obaviPregled() {
-    Log.logujAkciju(`Pregled pritisak je obavljen i vrednosti su za gornji: ${this.gornji}, za donji: ${this.donji}, a puls ${this.puls}.`)
+    Log.logujAkciju(`Pregled pritisak je obavljen. Vrednosti za gornji pritisak: ${this.gornji}, za donji: ${this.donji} puls: ${this.puls}.`)
   }
 }
