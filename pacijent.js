@@ -1,5 +1,4 @@
 import {Osoba} from "./osoba.js"
-import {Pregled} from "./pregled.js"
 import {Log} from "./log.js"
 
 export default class Pacijent extends Osoba {
@@ -14,7 +13,7 @@ export default class Pacijent extends Osoba {
 
   izaberiDoktora(doktor){
     if(this.doktor){
-      Log.logujAkciju(`${this.ime} žao nam je, ali možete imati samo jednog izabranog lekara.`)
+      console.log(`${this.ime} žao nam je, ali možete imati samo jednog izabranog lekara.`)
       return;
     } else {
       this.doktor = doktor;
@@ -23,5 +22,14 @@ export default class Pacijent extends Osoba {
     }  
   }
 
+  obaviPregled(){
+    if(!this.pregledi.length) {
+      console.log('Nemate zakazanih pregleda');
+      return;
+    }
+    //hard code-ovano
+    this.pregledi[0].obaviPregled();
+    this.pregledi.splice(this.pregledi[0], 1);
+  }
   
 }

@@ -12,7 +12,6 @@ export default class Doktor extends Osoba{
 
   dodajPacijenta(pacijent){
     this.pacijenti.push(pacijent);
-    pacijent.doktor = this.ime
     Log.logujAkciju(`Doktor ${this.ime} je dodao pacijenta ${pacijent.ime}.`);
   }
 
